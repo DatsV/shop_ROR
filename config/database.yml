@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: ____
+  host: winhost
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: shop_task_development
+
+test:
+  <<: *default
+  database: shop_task_test
+
+production:
+  <<: *default
+  database: shop_task_production
+  username: shop_task
+  password: <%= ENV["SHOP_TASK_DATABASE_PASSWORD"] %>
