@@ -14,3 +14,38 @@
  *= require_self
  */
 @import 'bootstrap';
+
+@import './main.scss';
+
+@import './product_card.scss';
+
+body {
+  background-color: antiquewhite;
+}
+
+a {
+  color: var(--bs-gray-900);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--bs-gray-900);
+  }
+}
+
+.field_with_errors {
+  padding: 0;
+
+  input {
+    border-bottom-color: var(--bs-red);
+  }
+
+  label {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+}
+
+.edit_pass_helper {
+  font-size: small;
+  text-align: center;
+}

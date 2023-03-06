@@ -1,0 +1,80 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.5rem;
+
+  border-bottom: 1px solid black;
+
+  text-transform: uppercase;
+}
+
+.logo {
+  font-size: xx-large;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  a {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    span {
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+    }
+  }
+}
+
+.settings_dropdown {
+  li {
+    font-size: small;
+
+    a:hover,
+    button:hover {
+      background-color: bisque;
+    }
+
+    button,
+    .admin_header {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .admin_header {
+      float: left;
+      font-size: smaller;
+      color: red;
+      margin-top: -0.5rem;
+    }
+  }
+}
+
+.role_admin {
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
+
+.user_table_helper {
+  font-size: smaller;
+  color: black;
+}
+
+.table_btn {
+  display: flex;
+  gap: 1rem;
+}

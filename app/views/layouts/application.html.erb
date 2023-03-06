@@ -11,6 +11,79 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+
+      <header>
+        <div class="logo">
+        <%= link_to "Our Shop", root_path %>
+        </div>
+        <div class="auth">
+          <%# Auth %>
+          <% if user_signed_in? %>
+
+            <div class="auth_info">
+              <span><%= "#{current_user.first_name} #{current_user.last_name}" %></span>
+              
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Settings
+              </button>
+              <ul class="dropdown-menu settings_dropdown" aria-labelledby="dropdownMenuButton1">
+               
+                
+                <li>
+                <%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %>
+                </li>
+
+                <li>
+                <%= link_to 'Purchases', purchases_path, class: "dropdown-item" %>
+                </li>
+
+                <li>
+                <%= button_to 'Log out', destroy_user_session_path, method: :delete, form: {turbolink: false}, class: "dropdown-item logout_btn" %>
+                </li>
+
+                <% if current_user.role == 'admin' %>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><span class="dropdown-header admin_header">Admin interface</span></li>
+                  <li>
+                  <%= link_to 'Edit users', admin_users_path, class: "dropdown-item" %>
+                  </li>
+                  <li>
+                  <%= link_to 'Edit items', admin_items_path, class: "dropdown-item" %>
+                  </li>
+                <% end %>
+
+               
+              </ul>
+            </div>
+
+
+
+            
+              
+
+              
+          <% else %>
+
+            <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary", role: "button" %>
+             <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-warning", role: "button" %>
+            
+          
+          <% end %>
+        </div>
+      </header>
+    
+    <div style="display: none">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    
+    </div>
+
+      <%= yield %>
+
+    </div>
+    
   </body>
 </html>

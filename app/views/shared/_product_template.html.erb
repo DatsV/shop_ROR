@@ -1,0 +1,23 @@
+
+<div class="row row-cols-3 card_container">
+
+
+
+  <% @items.present? && items.each do |item|  %>
+    <div class="card product_card">
+      <%# <img src="..." class="card-img-top" alt="..."> %>
+      <div class="card-img-top product_img_fake"></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
+        <p class="card-text"><%= item.description %></p>
+
+        <div class="product_card_footer">
+          <span><%= item.price %>$</span>
+          <a href="#" class="btn btn-primary">Buy</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+    
+  </div>

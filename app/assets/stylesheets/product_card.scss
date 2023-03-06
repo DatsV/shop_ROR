@@ -1,0 +1,42 @@
+.card_container {
+  justify-content: flex-start;
+  gap: 1rem 0;
+  margin: 2.5rem 0;
+  padding: 0 1rem;
+
+  .product_card:last-child {
+    margin-right: auto;
+  }
+}
+
+.product_card {
+  margin: 0 auto;
+  width: 12rem;
+}
+
+.product_card_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: larger;
+    font-weight: bold;
+  }
+}
+
+.product_img_fake {
+  margin-top: 0.8rem;
+  width: 100%;
+  height: 8rem;
+  background-color: #00000063;
+}
+
+.add_product_container {
+  display: flex;
+  margin-top: 1rem;
+
+  a {
+    margin: 0 auto;
+  }
+}
