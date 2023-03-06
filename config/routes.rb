@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :admin_users, :path => "admin-users"
   resources :admin_items, :path => "admin-items"
+
+  resources :purchases
+  resources :orders
   
   resources :search, only: %i[index]
 

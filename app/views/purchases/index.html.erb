@@ -1,0 +1,22 @@
+<h2>purchases</h2>
+
+
+
+<% @products.each do |product| %>
+  <div>
+  <%= l product[:created_at].to_date, format: '%e %B %Y' %>
+  <p>Id:  <%= product[:order_id] %></p>
+  <p>Amount: <%= product[:amount] %></p>
+
+  <p>Product:</p>
+  <% product[:descriptions].each do |desc| %>
+   <div>
+    <span>Quantity:  <%= desc[:quantity] %></span>
+  
+  <span>  <%= desc[:item][:name] %></span>
+  <span>  <%= desc[:item][:price] %></span>
+  </div>
+  <% end %>
+  </div>
+  <hr>
+<% end %>
