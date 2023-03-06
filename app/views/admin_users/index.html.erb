@@ -1,0 +1,38 @@
+
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        
+        <% if user.role == "admin" %>
+          <td class="role_admin"><%= user.role %></td>
+          <% else %>
+          <td><%= user.role %></td>
+        <% end %>
+
+        <td>
+         <% if current_user.id == user.id %>
+             <span class="user_table_helper">it's you</span>
+            <% else %>
+            <%= button_to "Delete", admin_user_path(user), method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>
+          <% end %>
+        </td>
+      </tr>
+      
+    <% end %>
+    
+  </tbody>
+</table>

@@ -1,0 +1,29 @@
+
+<%= form_with model: current_item, :url => path do |form| %>
+  <div class="container-sm col-sm-6 col-md-5 col-lg-4 pt-5">
+    <div class="row mb-3">
+      <%= form.label :name, 'Name', class: "form-label" %>
+      <%= form.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= form.label :description, 'Description', class: "form-label" %>
+      <%= form.text_field :description, autofocus: true, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= form.label :price, 'Price', class: "form-label" %>
+      <%= form.number_field :price, step: 0.05, autofocus: true, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= form.submit "#{button_text}", class: "btn btn-warning" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= link_to "Back", :back, class: "btn btn-secondary w-100 ", role: "button" %>
+    </div>
+  </div>
+<% end %>
+
+
