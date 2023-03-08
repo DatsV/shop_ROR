@@ -5,9 +5,15 @@ Rails.application.routes.draw do
 
   resources :admin_users, :path => "admin-users"
   resources :admin_items, :path => "admin-items"
-
+  
   resources :purchases
-  resources :orders
+
+  post '/order', to: 'orders#create'
+
+  get "/cart", to: 'cart#index'
+  post "/cart", to: 'cart#create'
+  patch "/cart", to: 'cart#update'
+  delete "/cart/:product_id", to: 'cart#destroy'
   
   resources :search, only: %i[index]
 

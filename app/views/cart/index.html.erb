@@ -1,0 +1,58 @@
+
+<% if @cart.any? %>
+    
+  <div>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @cart.each do |part| %>
+            <tr>
+              <td><%= part['item']['name'] %></td>
+              <td><%= part['quantity'] %></td>
+              <td><%= '%.2f' % (part['quantity'].to_f * part['item']['price'].to_f) %></td>
+              
+              <td>
+              <%= form_with url: '/cart', method: :patch do |f| %>
+                <%= f.hidden_field :product_id, value: part['id'] %>
+                <%= f.number_field :quantity, value: part['quantity'], min: 1, step: 1, max: 15, class: "cart_quantity" %>
+                <%= f.submit "Change", role: 'button', class: 'btn btn-warning' %>
+              <% end %>
+              </td>
+
+              <td>
+                <%= button_to 'delete', "/cart/#{part["id"]}", method: :delete,  
+                form: { data: { turbo_confirm: "Are you sure?" }}, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+
+    <div class="cart_order">
+      <div>
+        <span>total price:</span>
+        <span><b><%= @total_price %></b></span>     
+      </div>
+    
+      <%= form_with url: '/order', method: :post do |f| %>
+        <%= f.hidden_field :total_price, value: @total_price %>
+        <%= f.submit "Order", role: 'button', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <% else %>
+  <div class="cart_empty">
+    <h3>Noting here</h3>
+    <%= link_to "Back", root_path, class: "btn btn-secondary ", role: "button" %>
+  </div>
+<% end %>
+
+

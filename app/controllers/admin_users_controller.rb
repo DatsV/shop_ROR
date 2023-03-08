@@ -4,7 +4,7 @@ class AdminUsersController < ApplicationController
   
 
   def index
-    @users = User.all    
+    @users = User.all.order(id: :asc)
   end
 
   def destroy
@@ -12,6 +12,12 @@ class AdminUsersController < ApplicationController
       redirect_to admin_users_path
     end
   end
+
+  def update
+    User.update(params[:id], role: 'admin')
+    redirect_to admin_users_path
+  end
+  
 
 
   private def auth_user

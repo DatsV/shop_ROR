@@ -16,8 +16,22 @@
 
 .product_card_footer {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
+  flex-direction: column;
+
+  .quantity_field {
+    width: 3rem;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    margin-top: 0.5rem;
+  }
 
   span {
     font-size: larger;

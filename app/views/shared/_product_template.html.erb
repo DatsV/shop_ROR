@@ -8,9 +8,6 @@
 </div>
 
 <div class="row row-cols-3 card_container">
-
-
-
   <% @items.present? && items.each do |item|  %>
     <div class="card product_card">
       <%# <img src="..." class="card-img-top" alt="..."> %>
@@ -21,11 +18,13 @@
 
         <div class="product_card_footer">
           <span><%= item.price %>$</span>
-          <a href="#" class="btn btn-primary">Buy</a>
+          <%= form_with url: '/cart', method: :post do |f| %>
+            <%= f.hidden_field :product_id, value: item.id %>
+            <%= f.number_field :quantity, value: 1, min: 1, step: 1, max: 15, class: 'quantity_field' %>
+            <%= f.submit "Buy", role: 'button', class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
     </div>
   <% end %>
-
-    
   </div>

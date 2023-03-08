@@ -63,18 +63,13 @@ header {
   }
 }
 
-.role_admin {
-  display: flex;
-  flex-direction: column;
-  color: red;
-}
-
-.user_table_helper {
-  font-size: smaller;
-  color: black;
-}
 
 .table_btn {
   display: flex;
   gap: 1rem;
+}
+
+.flash {
+  width: fit-content;
+  margin: 0 auto;
 }

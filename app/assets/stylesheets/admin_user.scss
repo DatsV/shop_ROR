@@ -1,0 +1,17 @@
+.user_table_buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.role_admin {
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
+
+.user_table_helper {
+  font-size: smaller;
+  color: black;
+  text-align: center;
+}

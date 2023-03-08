@@ -1,22 +1,40 @@
-<h2>purchases</h2>
 
+<% if @products.any? %>
+    <% @products.each do |product| %>
+  <div class="purchases">
 
+    <div class="purchase_header">
+      <%= l product[:created_at].to_date, format: '%e %B %Y' %>
+      <span>Total price: <b><%= product[:amount] %></b></span>
+    </div>
 
-<% @products.each do |product| %>
-  <div>
-  <%= l product[:created_at].to_date, format: '%e %B %Y' %>
-  <p>Id:  <%= product[:order_id] %></p>
-  <p>Amount: <%= product[:amount] %></p>
-
-  <p>Product:</p>
-  <% product[:descriptions].each do |desc| %>
-   <div>
-    <span>Quantity:  <%= desc[:quantity] %></span>
-  
-  <span>  <%= desc[:item][:name] %></span>
-  <span>  <%= desc[:item][:price] %></span>
-  </div>
-  <% end %>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" >Name</th>
+          <th scope="col" >Quantity</th>
+          <th scope="col" >Price</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% product[:descriptions].each do |desc| %>
+            <tr>
+              <td><%= desc[:item][:name] %></td>
+              <td><%= desc[:quantity] %></td>
+              <td><%= desc[:item][:price] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
   </div>
   <hr>
 <% end %>
+
+  <% else %>
+  <div class="purchases_empty">
+    <h3>Noting here</h3>
+    <%= link_to "Back", root_path, class: "btn btn-secondary ", role: "button" %>
+  </div>
+<% end %>
+
+

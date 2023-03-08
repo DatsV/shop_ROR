@@ -23,13 +23,26 @@
           <td><%= user.role %></td>
         <% end %>
 
-        <td>
+       
          <% if current_user.id == user.id %>
-             <span class="user_table_helper">it's you</span>
+          <td class="user_table_helper">
+             <span >it's you</span>
+          </td>
             <% else %>
-            <%= button_to "Delete", admin_user_path(user), method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>
+            <td>
+              <div class="user_table_buttons">
+              
+              <%= button_to "Delete", admin_user_path(user), method: :delete, class: 'btn btn-danger btn-sm',  
+              form: { data: { turbo_confirm: "Are you sure?" }} %>
+
+                <% if user.role == "use" %>
+                  <%= button_to "Give adm", admin_user_path(user), method: :patch, class: 'btn btn-warning btn-sm',  
+                  form: { data: { turbo_confirm: "Are you sure?" }} %>
+                <% end %>
+              </div>
+            </td>
           <% end %>
-        </td>
+        
       </tr>
       
     <% end %>
