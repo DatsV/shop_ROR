@@ -18,10 +18,14 @@
 
         <div class="product_card_footer">
           <span><%= item.price %>$</span>
-          <%= form_with url: '/cart', method: :post do |f| %>
+         <%= form_with url: '/cart', method: :post, :data => {form: 'add_to_cart'}, remote: true do |f| %>
             <%= f.hidden_field :product_id, value: item.id %>
+            <%= f.hidden_field :product_name, value: item.name %>
+            <%= f.hidden_field :product_price, value: item.price %>
+            <%= f.hidden_field :total_price, value: 0 %>
+            <%= f.hidden_field :data, value: ""%>
             <%= f.number_field :quantity, value: 1, min: 1, step: 1, max: 15, class: 'quantity_field' %>
-            <%= f.submit "Buy", role: 'button', class: 'btn btn-primary' %>
+            <%= f.submit "Buy", role: 'button', class: 'btn btn-primary', :data => {btn: 'add'} %>
           <% end %>
         </div>
       </div>
