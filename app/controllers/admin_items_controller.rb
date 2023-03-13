@@ -34,18 +34,20 @@ class AdminItemsController < ApplicationController
       redirect_to admin_items_path
     end
   end
+
+  private
   
-  private def auth_user
+  def auth_user
     if !user_signed_in? || current_user.role != "admin"
       redirect_to root_path
     end
   end
 
-  private def items_params
+  def items_params
     params.require(:item).permit(:name, :description, :price)
   end
 
-  private def set_items
+  def set_items
     @current_item = Item.find(params[:id])
   end
 end
